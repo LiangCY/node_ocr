@@ -30,6 +30,7 @@
         e.preventDefault();
         if (uploading) return;
         uploading = true;
+        $('#image').text('处理中，请稍候...');
         var formData = new FormData($(this)[0]);
         $.ajax({
             type: 'POST',
@@ -40,10 +41,10 @@
             success: function (data) {
                 uploading = false;
                 if (data.success) {
-                    $('#image').append($("<img style='max-width: 100%;'>").attr('src', data.image));
+                    $('#image').empty().append($("<img style='max-width: 100%;'>").attr('src', data.image));
                     $('#text').text(data.text);
                 } else {
-
+                    $('#text').text(data.error);
                 }
             },
             error: function () {

@@ -39,7 +39,7 @@ app.post('/', upload.single('img'), function (req, res) {
             res.json({
                 success: true,
                 image: '/uploads/' + img.filename,
-                text: '123'
+                text: text
             });
         }
     });
