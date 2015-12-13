@@ -14,6 +14,14 @@
 <div class="container">
     <form>
         <input type="file" name="img" required data-filename-placement="inside" title="选择图片">
+        <div class="btn-group" data-toggle="buttons">
+            <label class="btn btn-primary active">
+                <input type="radio" name="lang" value="EN" checked>英文
+            </label>
+            <label class="btn btn-primary">
+                <input type="radio" name="lang" VALUE="CH">中文
+            </label>
+        </div>
         <input type="submit" class="btn btn-primary">
     </form>
     <div class="row">
@@ -22,6 +30,7 @@
     </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script src="/libs/bootstrap.file-input.js"></script>
 <script>
     $('input[type=file]').bootstrapFileInput();
@@ -42,7 +51,7 @@
                 uploading = false;
                 if (data.success) {
                     $('#image').empty().append($("<img style='max-width: 100%;'>").attr('src', data.image));
-                    $('#text').text(data.text);
+                    $('#text').html(data.text);
                 } else {
                     $('#text').text(data.error);
                 }
