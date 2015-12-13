@@ -61,16 +61,5 @@ app.post('/', upload.single('img'), function (req, res) {
     }
 });
 
-app.get('/test', function (req, res) {
-    //tesseract.process(__dirname + '/hask.jpg', function (err, text) {
-    //    if (err) {
-    //        console.log(err);
-    //        res.send(err);
-    //    } else {
-    //        res.send(text);
-    //    }
-    //});
-});
-
 app.listen(3000);
 
