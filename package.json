@@ -1,0 +1,14 @@
+{
+  "name": "node_ocr",
+  "version": "0.0.0",
+  "description": "",
+  "main": "app.js",
+  "author": "lcy",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "express": "^4.13.3",
+    "mime": "^1.3.4",
+    "multer": "^1.1.0",
+    "node-tesseract": "~0.2.7"
+  }
+}
