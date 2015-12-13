@@ -2,16 +2,55 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>上传图片</title>
+    <title>文字识别</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+    <style>
+        form {
+            margin: 20px 0;
+        }
+    </style>
 </head>
 <body>
-<form enctype="multipart/form-data" method="post">
-    <input type="file" name="img">
-    <input type="radio" name="lang" value="EN" id="en">
-    <label for="en">英文</label>
-    <input type="radio" name="lang" value="CH" id="ch">
-    <label for="ch">简体中文</label>
-    <input type="submit">
-</form>
+<div class="container">
+    <form>
+        <input type="file" name="img" required data-filename-placement="inside" title="选择图片">
+        <input type="submit" class="btn btn-primary">
+    </form>
+    <div class="row">
+        <div class="col-md-6" id="image"></div>
+        <div class="col-md-6" id="text"></div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="/libs/bootstrap.file-input.js"></script>
+<script>
+    $('input[type=file]').bootstrapFileInput();
+    var uploading = false;
+    $('form').on('submit', function (e) {
+        e.preventDefault();
+        if (uploading) return;
+        uploading = true;
+        var formData = new FormData($(this)[0]);
+        $.ajax({
+            type: 'POST',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                uploading = false;
+                if (data.success) {
+                    $('#image').append($("<img style='max-width: 100%;'>").attr('src', data.image));
+                    $('#text').text(data.text);
+                } else {
+
+                }
+            },
+            error: function () {
+                uploading = false;
+            }
+        });
+    });
+</script>
 </body>
 </html>
