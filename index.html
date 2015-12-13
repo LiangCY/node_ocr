@@ -41,6 +41,7 @@
         if (uploading) return;
         uploading = true;
         $('#image').text('处理中，请稍候...');
+        $('#text').empty();
         var formData = new FormData($(this)[0]);
         $.ajax({
             type: 'POST',
