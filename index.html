@@ -14,6 +14,7 @@
 <div class="container">
     <form>
         <input type="file" name="img" required data-filename-placement="inside" title="选择图片">
+
         <div class="btn-group" data-toggle="buttons">
             <label class="btn btn-primary active">
                 <input type="radio" name="lang" value="EN" checked>英文
@@ -51,7 +52,7 @@
                 uploading = false;
                 if (data.success) {
                     $('#image').empty().append($("<img style='max-width: 100%;'>").attr('src', data.image));
-                    $('#text').html(data.text);
+                    $('#text').html('<pre>' + data.text + '</pre>');
                 } else {
                     $('#text').text(data.error);
                 }
