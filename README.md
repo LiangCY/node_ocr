@@ -6,6 +6,6 @@
 
 ### 测试截图
 
-![英文](http://i4.tietuku.com/8560b5c59d58e47e.jpg)
+![英文](https://raw.githubusercontent.com/LiangCY/node_ocr/master/screenshots/result_en.jpg)
 
-![中文](http://i4.tietuku.com/a74d0f6802f30b07.jpg)
+![中文](https://raw.githubusercontent.com/LiangCY/node_ocr/master/screenshots/result_ch.jpg)
