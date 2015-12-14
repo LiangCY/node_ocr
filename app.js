@@ -30,41 +30,31 @@ app.post('/', upload.single('img'), function (req, res) {
     var lang = req.body.lang;
     var img = req.file;
     if (lang == 'EN') {
-        tesseract.process(path.join(__dirname, img.path), function (err, text) {
-            if (err) {
-                res.json({
-                    success: false,
-                    error: err.message
-                });
-            } else {
-                res.json({
-                    success: true,
-                    image: '/uploads/' + img.filename,
-                    text: text
-                });
-            }
-        });
+        var options = {
+            l: 'eng',
+            psm: 6
+        };
     }
     else if (lang == 'CH') {
-        var options = {
+        options = {
             l: 'chi_sim',
             psm: 6
         };
-        tesseract.process(path.join(__dirname, img.path), options, function (err, text) {
-            if (err) {
-                res.json({
-                    success: false,
-                    error: err.message
-                });
-            } else {
-                res.json({
-                    success: true,
-                    image: '/uploads/' + img.filename,
-                    text: text
-                });
-            }
-        });
     }
+    tesseract.process(path.join(__dirname, img.path), options, function (err, text) {
+        if (err) {
+            res.json({
+                success: false,
+                error: err.message
+            });
+        } else {
+            res.json({
+                success: true,
+                image: '/uploads/' + img.filename,
+                text: text
+            });
+        }
+    });
 });
 
 app.listen(3000);
