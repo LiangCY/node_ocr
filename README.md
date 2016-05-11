@@ -2,7 +2,6 @@
 
 使用[node-tesseract](https://github.com/desmondmorris/node-tesseract)进行文字识别。
 
-[Live Demo](http://chengz.chinacloudapp.cn/)
 
 ### 测试截图
 
